@@ -1,8 +1,9 @@
 import "@radix-ui/themes/styles.css";
 import "./App.css";
-import {Flex, Text, Avatar, Separator, Box} from "@radix-ui/themes";
-import { Accordion } from "radix-ui";
+import {Flex, Text, Avatar, Separator, Box, TextArea, IconButton, Tooltip} from "@radix-ui/themes";
+import {Accordion} from "radix-ui";
 import {AccordionContent, AccordionTrigger} from "@radix-ui/react-accordion";
+import {IconPlayerPlayFilled} from '@tabler/icons-react';
 
 function App() {
   return (
@@ -20,38 +21,33 @@ function App() {
         <Box width="64px" height="64px">
         </Box>
 
+        <Flex align="center" justify="between">
+            <Flex gap="2">
+                <Tooltip content="Create Channel">
+                    <IconButton radius="full">
+                        <IconPlayerPlayFilled/>
+                    </IconButton>
+                </Tooltip>
+            </Flex>
+
+        </Flex>
+
         <Separator my="3" size="4" />
 
-        <Accordion.Root
-            className="AccordionRoot"
-            type="single"
-            defaultValue="item-1"
-            collapsible
-        >
+        <Accordion.Root className="AccordionRoot" type="single" defaultValue="item-1" collapsible>
             <Accordion.Item className="AccordionItem" value="item-1">
-                <AccordionTrigger>Is it accessible?</AccordionTrigger>
+                <AccordionTrigger>
+                    <Text>Channels</Text>
+                </AccordionTrigger>
                 <AccordionContent>
-                    Yes. It adheres to the WAI-ARIA design pattern.
+                    <Text>Red Channel 1</Text>
                 </AccordionContent>
-            </Accordion.Item>
-
-            <Accordion.Item className="AccordionItem" value="item-2">
-                <AccordionTrigger>Is it unstyled?</AccordionTrigger>
-                <AccordionContent>
-                    Yes. It's unstyled by default, giving you freedom over the look and
-                    feel.
-                </AccordionContent>
-            </Accordion.Item>
-
-            <Accordion.Item className="AccordionItem" value="item-3">
-                <AccordionTrigger>Can it be animated?</AccordionTrigger>
-                <Accordion.Content className="AccordionContent">
-                    <div className="AccordionContentText">
-                        Yes! You can animate the Accordion with CSS or JavaScript.
-                    </div>
-                </Accordion.Content>
             </Accordion.Item>
         </Accordion.Root>
+
+        <Separator my="3" size="4" />
+
+        <TextArea placeholder="{}" resize="none"/>
     </Flex>
   );
 }
